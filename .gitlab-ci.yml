@@ -1,0 +1,12 @@
+stages:
+  - deploy
+
+deploy-dev:
+  stage: deploy
+  only:
+    - development
+  script:
+    # - eb init jobbee.work-dev -p Docker -k 446730172795 --region ap-southeast-1
+    # - eb deploy -l $(sed -e '$!d' versions.txt)-$(date "+%F")-$(date "+%s")
+  tags:
+    - hackintosh

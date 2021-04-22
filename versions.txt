@@ -1,0 +1,3 @@
+# Deploy versions
+# echo $(sed -e '$!d' versions.txt)-$(date "+%F")-$(date "+%s")
+v0.0.1
