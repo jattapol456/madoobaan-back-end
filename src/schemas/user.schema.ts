@@ -1,7 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { Base, BaseDocument } from './base.schema'
 import * as mongoose from 'mongoose'
-import { UserCompany } from './user-company.schema'
 
 @Schema({ timestamps: true })
 export class User extends Base {
@@ -82,9 +81,6 @@ export class User extends Base {
 
   @Prop({ default: null })
   imageProfileUrl?: string
-
-  @Prop({ type: [{ type: mongoose.Types.ObjectId, ref: 'UserCompany' }], default: [] })
-  companies?: mongoose.Types.ObjectId | UserCompany[]
 }
 
 export type UserDocument = User & BaseDocument
