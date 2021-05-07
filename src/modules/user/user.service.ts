@@ -1,14 +1,15 @@
-import { Model, Types } from 'mongoose'
-import { Injectable } from '@nestjs/common'
-import { InjectModel } from '@nestjs/mongoose'
+import { Model, Types } from 'mongoose';
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 
-import { BaseService } from '@modules/base/base.service'
-import { User, UserDocument } from '@schemas/user.schema'
+import { BaseService } from '@modules/base/base.service';
+import { User, UserDocument } from '@schemas/user.schema';
+import { UserDto } from './user.dto';
 
 @Injectable()
 export class UserService extends BaseService<UserDocument> {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {
-    super(userModel)
+    super(userModel);
   }
 
   async findByIdIn(users: Types.ObjectId[]): Promise<UserDocument[]> {
@@ -16,6 +17,11 @@ export class UserService extends BaseService<UserDocument> {
       _id: {
         $in: users,
       },
-    })
+    });
+  }
+
+  async create(user: UserDto): Promise<UserDocument> {
+    const newNumber = await this.userModel.create(user);
+    return newNumber;
   }
 }
