@@ -22,16 +22,16 @@ import {
   UserDto,
   EditableSimpleUserDto,
   EditableSimpleUserRequestDto,
-} from '@modules/user/user.dto';
-import { FirebaseUserRequest } from 'src/types';
-import { CaslAbilityFactory } from '@modules/casl/casl-ability.factory';
-import { Action } from 'src/constants/action';
-import { User } from '@schemas/user.schema';
+} from '@modules/user/user.dto'
+import { FirebaseUserRequest } from 'src/types'
+import { CaslAbilityFactory } from '@modules/casl/casl-ability.factory'
+import { Action } from 'src/constants/action'
+import { User } from '@schemas/user.schema'
+import { ZoneService } from '@modules/zone/zone.service'
 
 @Controller('users')
-@UseGuards(FirebaseGuard)
 export class UsersController {
-  constructor(private userService: UserService, private caslAbilityFactory: CaslAbilityFactory) {}
+  constructor(private userService: UserService,private caslAbilityFactory: CaslAbilityFactory) {}
 
   @Get('me')
   @UseInterceptors(ClassSerializerInterceptor)
