@@ -30,7 +30,7 @@ export class Announce extends Base {
   zipcode!: string
 
   @Prop()
-  house_number!: string
+  houseNumber!: string
 
   @Prop()
   swine!: string
@@ -42,10 +42,10 @@ export class Announce extends Base {
   road!: string
 
   @Prop()
-  contact_person_name!: string
+  contactPersonName!: string
 
   @Prop()
-  phone_number!: string
+  phoneNumber!: string
 
   @Prop()
   email?: string
@@ -54,70 +54,70 @@ export class Announce extends Base {
   facebook?: string
 
   @Prop()
-  line_id?: string
+  lineId?: string
 
   @Prop()
-  number_layers?: string
+  numberLayers?: string
 
   @Prop()
-  number_bedroom!: string
+  numberBedroom!: string
 
   @Prop()
-  number_toilet!: string
+  numberToilet!: string
 
   @Prop()
-  number_parking!: string
+  numberParking!: string
 
   @Prop()
-  home_direction?: string
+  homeDirection?: string
 
   @Prop()
   furniture?: string
 
   @Prop()
-  number_rai!: string
+  numberRai!: string
 
   @Prop()
-  number_tasks!: string
+  numberTasks!: string
 
   @Prop()
-  number_Square_wah!: string
+  numberSquareWah!: string
 
   @Prop()
-  number_Square_meters!: string
+  numberSquareMeters!: string
   
   @Prop()
-  sale_price!: string
+  salePrice!: string
 
   @Prop()
-  rental_commonfee_to_month?: string
+  rentalCommonfeeToMonth?: string
 
   @Prop()
-  room_status?: string
+  roomStatus?: string
 
   @Prop()
   agent?: string
 
   @Prop()
-  common_fee?: string[]
+  commonFee?: string[]
 
   @Prop()
   security?: string[]
 
   @Prop()
-  exercise_facilities?: string[]
+  exerciseFacilities?: string[]
 
   @Prop()
-  topic_name!: string
+  topicName!: string
 
   @Prop()
-  announcement_code?: string
+  announcementCode?: string
 
   @Prop()
-  more_details!: string
+  moreDetails!: string
 
   @Prop()
-  cover_photo!: string
+  coverPhoto!: string
 
   @Prop()
   photo?: string

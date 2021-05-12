@@ -12,16 +12,16 @@ export class Zone extends Base {
   }
 
   @Prop({ unique: false })
-  subdistrict_name!: string
+  subdistrictName!: string
   
   @Prop()
-  subdistrict_id!: number
+  subdistrictId!: number
 
   @Prop()
   img!: string
 
   @Prop()
-  province_id!: number
+  provinceId!: number
 
   @Prop()
   province!: string
@@ -30,7 +30,7 @@ export class Zone extends Base {
   district!: string
 
   @Prop()
-  district_id!: number
+  districtId!: number
 
   @Prop()
   zipcode!: number

@@ -23,7 +23,7 @@ export class AnnounceDto {
     zipcode!: string
 
     @IsString()
-    house_number!: string
+    houseNumber!: string
 
     @IsString()
     swine!: string
@@ -35,10 +35,10 @@ export class AnnounceDto {
     road!: string
 
     @IsString()
-    contact_person_name?: string
+    contactPersonName?: string
  
     @IsString()
-    phone_number?: string
+    phoneNumber?: string
  
     @IsString()
     email?: string
@@ -47,70 +47,70 @@ export class AnnounceDto {
     facebook?: string
  
     @IsString()
-    line_id?: string
+    lineId?: string
  
     @IsString()
-    number_layers?: string
+    numberLayers?: string
     
     @IsString()
-    number_bedroom?: string
+    numberBedroom?: string
     
     @IsString()
-    number_toilet?: string
+    numberToilet?: string
     
     @IsString()
-    number_parking?: string
+    numberParking?: string
     
     @IsString()
-    home_direction?: string
+    homeDirection?: string
     
     @IsString()
     furniture?: string
     
     @IsString()
-    sale_prnumber_raiice?: string
+    salePrnumberRaiice?: string
 
     @IsString()
     number_tasks?: string
 
     @IsString()
-    number_Square_wah?: string
+    numberSquareWah?: string
 
     @IsString()
-    number_Square_meters?: string
+    numberSquareMeters?: string
 
     @IsString()
-    sale_price?: string
+    salePrice?: string
   
     @IsString()
-    rental_commonfee_to_month?: string
+    rentalCommonfeeToMonth?: string
   
     @IsString()
-    room_status?: string
+    roomStatus?: string
   
     @IsString()
     agent?: string
   
     @IsString()
-    common_fee?: string[]
+    commonFee?: string[]
   
     @IsString()
     security?: string[]
   
     @IsString()
-    exercise_facilities?: string[]
+    exerciseFacilities?: string[]
   
     @IsString()
-    topic_name!: string
+    topicName!: string
   
     @IsString()
-    announcement_code!: string
+    announcementCode!: string
   
     @IsString()
-    more_details!: string
+    moreDetails!: string
   
     @IsString()
-    cover_photo!: string
+    coverPhoto!: string
   
     @IsString()
     photo?: string
