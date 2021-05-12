@@ -10,7 +10,7 @@ interface IpaginateZone {
 }
 
 interface IinsertZone {
-  subdistrict_name: string;
+  subdistrictName: string;
   img: string;
   province: string;
   district: string;
