@@ -13,15 +13,27 @@ export class Zone extends Base {
 
   @Prop({ unique: false })
   subdistrict_name!: string
+  
+  @Prop()
+  subdistrict_id!: number
 
   @Prop()
   img!: string
+
+  @Prop()
+  province_id!: number
 
   @Prop()
   province!: string
 
   @Prop()
   district!: string
+
+  @Prop()
+  district_id!: number
+
+  @Prop()
+  zipcode!: number
 }
 
 export type ZoneDocument = Zone & BaseDocument
