@@ -1,34 +1,40 @@
 import { OmitType, PartialType, PickType } from '@nestjs/swagger'
-import { Exclude, Expose } from 'class-transformer'
-import { IsString} from 'class-validator'
+import { Expose } from 'class-transformer'
+import { IsInt, IsString} from 'class-validator'
 import { IEditable } from 'src/types'
 
 export class ZoneDto {
   @IsString()
   subdistrict_name!: string
+  
+  @IsInt()
+  subdistrict_id!: number
 
   @IsString()
   img!: string
 
   @IsString()
   province!: string
+  
+  @IsInt()
+  province_id!: number
 
   @IsString()
   district!: string
+  
+  @IsInt()
+  district_id!: number
+
+  @IsInt()
+  zipcode!: number
 }
 
-@Exclude()
+@Expose()
 export class SimpleZoneDto extends ZoneDto {
   constructor(zone: SimpleZoneDto) {
     super()
     Object.assign(this, zone)
   }
-
-  @Expose()
-  subdistrict_name: any
-  
-  @Expose()
-  img: any
 }
 
 export class EditableSimpleUserRequestDto extends PartialType(OmitType(ZoneDto, [])) {}

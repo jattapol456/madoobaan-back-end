@@ -4,13 +4,12 @@ import {
     Controller, 
     ClassSerializerInterceptor, 
     UseInterceptors, 
-    Param,
     Req,
     Body
 } from '@nestjs/common';
 import { ZoneService } from '@modules/zone/zone.service';
 import { ZoneDocument } from '@schemas/zone.schema';
-import { SimpleZoneDto, ZoneDto } from '@modules/zone/zone.dto';
+import { SimpleZoneDto } from '@modules/zone/zone.dto';
 import { plainToClass } from 'class-transformer';
 import { Request} from "express"
 
@@ -24,6 +23,10 @@ interface IinsertZone {
     img: string;
     province: string;
     district: string;
+    zipcode: number;
+    district_id: number;
+    province_id: number;
+    subdistrict_id: number;
   }
 
 @Controller('zones')
@@ -44,6 +47,5 @@ export class ZoneController {
             .paginateZone({ limit, page})
             .then((result) => result.map((res)=> plainToClass(SimpleZoneDto, res.toObject())))
     }
-
 }
 

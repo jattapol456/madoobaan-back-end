@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { Base, BaseDocument } from './base.schema'
 import * as mongoose from 'mongoose'
+import mongoosePaginate = require('mongoose-paginate-v2')
 
 @Schema({ timestamps: true })
 export class Announce extends Base {
@@ -26,13 +27,13 @@ export class Announce extends Base {
   subdistrict!: string
 
   @Prop()
-  postal_code!: number
+  zipcode!: string
 
   @Prop()
-  house_number!: number
+  house_number!: string
 
   @Prop()
-  swine!: number
+  swine!: string
 
   @Prop()
   alley!: string
@@ -41,16 +42,10 @@ export class Announce extends Base {
   road!: string
 
   @Prop()
-  latitude!: string
-
-  @Prop()
-  สongitude!: string
-
-  @Prop()
   contact_person_name!: string
 
   @Prop()
-  phone_number!: number
+  phone_number!: string
 
   @Prop()
   email?: string
@@ -62,16 +57,16 @@ export class Announce extends Base {
   line_id?: string
 
   @Prop()
-  number_layers?: number
+  number_layers?: string
 
   @Prop()
-  number_bedroom!: number
+  number_bedroom!: string
 
   @Prop()
-  number_toilet!: number
+  number_toilet!: string
 
   @Prop()
-  number_parking!: number
+  number_parking!: string
 
   @Prop()
   home_direction?: string
@@ -80,22 +75,22 @@ export class Announce extends Base {
   furniture?: string
 
   @Prop()
-  number_rai!: number
+  number_rai!: string
 
   @Prop()
-  number_tasks!: number
+  number_tasks!: string
 
   @Prop()
-  number_Square_wah!: number
+  number_Square_wah!: string
 
   @Prop()
-  number_Square_meters!: number
+  number_Square_meters!: string
+  
+  @Prop()
+  sale_price!: string
 
   @Prop()
-  Rental_price_to_month!: number
-
-  @Prop()
-  Rental_commonfee_to_month?: number
+  rental_commonfee_to_month?: string
 
   @Prop()
   room_status?: string
@@ -104,19 +99,19 @@ export class Announce extends Base {
   agent?: string
 
   @Prop()
-  Common_fee?: string
+  common_fee?: string[]
 
   @Prop()
-  security?: string
+  security?: string[]
 
   @Prop()
-  exercise_facilities?: string
+  exercise_facilities?: string[]
 
   @Prop()
   topic_name!: string
 
   @Prop()
-  announcement_code?: number
+  announcement_code?: string
 
   @Prop()
   more_details!: string
@@ -131,3 +126,5 @@ export class Announce extends Base {
 export type AnnounceDocument = Announce & BaseDocument
 
 export const AnnounceSchema = SchemaFactory.createForClass(Announce)
+
+AnnounceSchema.plugin(mongoosePaginate)
