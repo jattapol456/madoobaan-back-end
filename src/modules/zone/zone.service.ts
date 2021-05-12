@@ -15,9 +15,9 @@ interface IinsertZone {
   province: string;
   district: string;
   zipcode: number;
-  district_id: number;
-  province_id: number;
-  subdistrict_id: number;
+  districtId: number;
+  provinceId: number;
+  subdistrictId: number;
 }
 
 @Injectable()

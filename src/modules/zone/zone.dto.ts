@@ -5,10 +5,10 @@ import { IEditable } from 'src/types'
 
 export class ZoneDto {
   @IsString()
-  subdistrict_name!: string
+  subdistrictName!: string
   
   @IsInt()
-  subdistrict_id!: number
+  subdistrictId!: number
 
   @IsString()
   img!: string
@@ -17,13 +17,13 @@ export class ZoneDto {
   province!: string
   
   @IsInt()
-  province_id!: number
+  provinceId!: number
 
   @IsString()
   district!: string
   
   @IsInt()
-  district_id!: number
+  districtId!: number
 
   @IsInt()
   zipcode!: number
