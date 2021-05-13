@@ -28,7 +28,7 @@ interface IinsertAnnounce {
     alley: string;
     road: string;
     contactPersonName: string;
-    phone_number: string;
+    phoneNumber: string;
     email: string;
     facebook: string;
     lineId: string;
