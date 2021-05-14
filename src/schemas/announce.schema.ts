@@ -44,7 +44,7 @@ export class Announce extends Base {
   bedroom!: string
 
   @Prop()
-  toilet!: string
+  bathroom!: string
 
   @Prop()
   parking!: string
