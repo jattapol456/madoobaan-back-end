@@ -11,39 +11,33 @@ interface IpaginateAnnounce {
 
 interface IinsertAnnounce {
   type: string;
-  project: string;
+  houseNumber: string;
+  moo: string;
+  soi: string;
+  road: string;
   province: string;
   district: string;
   subdistrict: string;
   zipcode: string;
-  houseNumber: string;
-  swine: string;
-  alley: string;
-  road: string;
-  contactPersonName: string;
-  phoneNumber: string;
-  email: string;
-  facebook: string;
-  lineId: string;
-  numberLayers: string;
-  numberBedroom: string;
-  numberToilet: string;
-  numberParking: string;
-  homeDirection: string;
+  floor: string;
+  bedroom: string;
+  bathroom: string;
+  parking: string;
+  direction: string;
   furniture: string;
-  numberRai: string;
-  numberTasks: string;
-  numberSquareWah: string;
-  numberSquareMeters: string;
+  rai: string;
+  ngan: string;
+  squareWa: string;
+  squareMeter: string;
   salePrice: string;
-  rentalCommonfeeToMonth: string;
+  rentalCommonfee: string;
   roomStatus: string;
   agent: string;
   commonFee: string[];
   security: string[];
-  exerciseFacilities: string[];
+  facilities: string[];
   topicName: string;
-  announcementCode: string;
+  announceCode: string;
   moreDetails: string;
   coverPhoto: string;
   photo: string;
@@ -62,7 +56,7 @@ export class AnnounceService extends BaseService<AnnounceDocument> {
     return await this.announceModel.create(arg)
   }
 
-  async paginateAnnounce(arg : IpaginateAnnounce): Promise<AnnounceDocument[]> {
+  async paginateAnnounce(arg: IpaginateAnnounce): Promise<AnnounceDocument[]> {
     const options = {
       limit: arg.limit!,
       page: arg.page!
