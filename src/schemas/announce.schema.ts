@@ -15,9 +15,6 @@ export class Announce extends Base {
   type!: string
 
   @Prop()
-  project?: string
-
-  @Prop()
   province!: string
 
   @Prop()
@@ -33,64 +30,49 @@ export class Announce extends Base {
   houseNumber!: string
 
   @Prop()
-  swine!: string
+  moo!: string
 
   @Prop()
-  alley!: string
+  soi!: string
 
   @Prop()
   road!: string
 
   @Prop()
-  contactPersonName!: string
+  floor?: string
 
   @Prop()
-  phoneNumber!: string
-
-  @Prop()
-  email?: string
-
-  @Prop()
-  facebook?: string
-
-  @Prop()
-  lineId?: string
-
-  @Prop()
-  numberLayers?: string
-
-  @Prop()
-  numberBedroom!: string
+  bedroom!: string
 
   @Prop()
   bathroom!: string
 
   @Prop()
-  numberParking!: string
+  parking!: string
 
   @Prop()
-  homeDirection?: string
+  direction?: string
 
   @Prop()
   furniture?: string
 
   @Prop()
-  numberRai!: string
+  rai!: string
 
   @Prop()
-  numberTasks!: string
+  ngan!: string
 
   @Prop()
-  numberSquareWah!: string
+  squareWa!: string
 
   @Prop()
-  numberSquareMeters!: string
+  squareMeter!: string
   
   @Prop()
   salePrice!: string
 
   @Prop()
-  rentalCommonfeeToMonth?: string
+  rentalCommonfee?: string
 
   @Prop()
   roomStatus?: string
@@ -105,13 +87,13 @@ export class Announce extends Base {
   security?: string[]
 
   @Prop()
-  exerciseFacilities?: string[]
+  facilities?: string[]
 
   @Prop()
   topicName!: string
 
   @Prop()
-  announcementCode?: string
+  announceCode?: string
 
   @Prop()
   moreDetails!: string
