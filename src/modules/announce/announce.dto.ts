@@ -6,9 +6,6 @@ import { IEditable } from 'src/types'
 export class AnnounceDto {
     @IsString()
     type!: string
-  
-    @IsString()
-    project?: string
 
     @IsString()
     province!: string
@@ -26,64 +23,49 @@ export class AnnounceDto {
     houseNumber!: string
 
     @IsString()
-    swine!: string
+    moo!: string
 
     @IsString()
-    alley!: string
+    soi!: string
 
     @IsString()
     road!: string
+ 
+    @IsString()
+    floor?: string
+    
+    @IsString()
+    bedroom?: string
 
     @IsString()
-    contactPersonName?: string
- 
-    @IsString()
-    phoneNumber?: string
- 
-    @IsString()
-    email?: string
- 
-    @IsString()
-    facebook?: string
- 
-    @IsString()
-    lineId?: string
- 
-    @IsString()
-    numberLayers?: string
+    bathroom?: string
     
     @IsString()
-    numberBedroom?: string
+    parking?: string
     
     @IsString()
-    numberToilet?: string
-    
-    @IsString()
-    numberParking?: string
-    
-    @IsString()
-    homeDirection?: string
+    direction?: string
     
     @IsString()
     furniture?: string
     
     @IsString()
-    salePrnumberRaiice?: string
+    rai?: string
 
     @IsString()
-    number_tasks?: string
+    ngan?: string
 
     @IsString()
-    numberSquareWah?: string
+    squareWa?: string
 
     @IsString()
-    numberSquareMeters?: string
+    squareMeter?: string
 
     @IsString()
     salePrice?: string
   
     @IsString()
-    rentalCommonfeeToMonth?: string
+    rentalCommonfee?: string
   
     @IsString()
     roomStatus?: string
@@ -98,13 +80,13 @@ export class AnnounceDto {
     security?: string[]
   
     @IsString()
-    exerciseFacilities?: string[]
+    facilities?: string[]
   
     @IsString()
     topicName!: string
   
     @IsString()
-    announcementCode!: string
+    announceCode!: string
   
     @IsString()
     moreDetails!: string
