@@ -6,18 +6,9 @@ import { IEditable } from 'src/types'
 export class AnnounceDto {
     @IsString()
     type!: string
-
+  
     @IsString()
-    houseNumber!: string
-
-    @IsString()
-    moo!: string
-
-    @IsString()
-    soi!: string
-
-    @IsString()
-    road!: string
+    project?: string
 
     @IsString()
     province!: string
@@ -32,68 +23,95 @@ export class AnnounceDto {
     zipcode!: string
 
     @IsString()
-    floor?: string
+    houseNumber!: string
 
     @IsString()
-    bedroom!: string
+    swine!: string
 
     @IsString()
-    bathroom!: string
+    alley!: string
 
     @IsString()
-    parking!: string
+    road!: string
 
     @IsString()
-    direction?: string
-
+    contactPersonName?: string
+ 
     @IsString()
-    furniture?: string
-
+    phoneNumber?: string
+ 
     @IsString()
-    rai!: string
-
+    email?: string
+ 
     @IsString()
-    ngan!: string
-
+    facebook?: string
+ 
     @IsString()
-    squareWa!: string
-
+    lineId?: string
+ 
     @IsString()
-    squareMeter!: string
+    numberLayers?: string
     
     @IsString()
-    salePrice!: string
+    numberBedroom?: string
+    
+    @IsString()
+    numberToilet?: string
+    
+    @IsString()
+    numberParking?: string
+    
+    @IsString()
+    homeDirection?: string
+    
+    @IsString()
+    furniture?: string
+    
+    @IsString()
+    salePrnumberRaiice?: string
 
     @IsString()
-    rentalCommonfee?: string
+    number_tasks?: string
 
+    @IsString()
+    numberSquareWah?: string
+
+    @IsString()
+    numberSquareMeters?: string
+
+    @IsString()
+    salePrice?: string
+  
+    @IsString()
+    rentalCommonfeeToMonth?: string
+  
     @IsString()
     roomStatus?: string
-
+  
     @IsString()
     agent?: string
-
+  
     @IsString()
     commonFee?: string[]
-
+  
     @IsString()
     security?: string[]
-
+  
     @IsString()
-    facilities?: string[]
-
+    exerciseFacilities?: string[]
+  
     @IsString()
     topicName!: string
-
+  
     @IsString()
-    announceCode?: string
-
+    announcementCode!: string
+  
     @IsString()
     moreDetails!: string
-
+  
     @IsString()
     coverPhoto!: string
-
+  
     @IsString()
     photo?: string
 }

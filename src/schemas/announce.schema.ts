@@ -10,20 +10,12 @@ export class Announce extends Base {
     Object.assign(this, Announce)
   }
 
+
   @Prop()
   type!: string
 
   @Prop()
-  houseNumber!: string
-
-  @Prop()
-  moo!: string
-
-  @Prop()
-  soi!: string
-
-  @Prop()
-  road!: string
+  project?: string
 
   @Prop()
   province!: string
@@ -38,40 +30,67 @@ export class Announce extends Base {
   zipcode!: string
 
   @Prop()
-  floor?: string
+  houseNumber!: string
 
   @Prop()
-  bedroom!: string
+  swine!: string
+
+  @Prop()
+  alley!: string
+
+  @Prop()
+  road!: string
+
+  @Prop()
+  contactPersonName!: string
+
+  @Prop()
+  phoneNumber!: string
+
+  @Prop()
+  email?: string
+
+  @Prop()
+  facebook?: string
+
+  @Prop()
+  lineId?: string
+
+  @Prop()
+  numberLayers?: string
+
+  @Prop()
+  numberBedroom!: string
 
   @Prop()
   bathroom!: string
 
   @Prop()
-  parking!: string
+  numberParking!: string
 
   @Prop()
-  direction?: string
+  homeDirection?: string
 
   @Prop()
   furniture?: string
 
   @Prop()
-  rai!: string
+  numberRai!: string
 
   @Prop()
-  ngan!: string
+  numberTasks!: string
 
   @Prop()
-  squareWa!: string
+  numberSquareWah!: string
 
   @Prop()
-  squareMeter!: string
+  numberSquareMeters!: string
   
   @Prop()
   salePrice!: string
 
   @Prop()
-  rentalCommonfee?: string
+  rentalCommonfeeToMonth?: string
 
   @Prop()
   roomStatus?: string
@@ -86,13 +105,13 @@ export class Announce extends Base {
   security?: string[]
 
   @Prop()
-  facilities?: string[]
+  exerciseFacilities?: string[]
 
   @Prop()
   topicName!: string
 
   @Prop()
-  announceCode?: string
+  announcementCode?: string
 
   @Prop()
   moreDetails!: string
