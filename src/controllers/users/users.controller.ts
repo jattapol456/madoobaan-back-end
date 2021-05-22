@@ -27,13 +27,13 @@ import { FirebaseUserRequest } from 'src/types'
 import { CaslAbilityFactory } from '@modules/casl/casl-ability.factory'
 import { Action } from 'src/constants/action'
 import { User } from '@schemas/user.schema'
-import { ZoneService } from '@modules/zone/zone.service'
 
 @Controller('users')
 export class UsersController {
   constructor(private userService: UserService,private caslAbilityFactory: CaslAbilityFactory) {}
 
   @Get('me')
+  @UseGuards(FirebaseGuard)
   @UseInterceptors(ClassSerializerInterceptor)
   async getMeProfile(@Req() req: FirebaseUserRequest): Promise<SimpleUserDto> {
     if (!req.user) throw new UnauthorizedException();
@@ -44,6 +44,7 @@ export class UsersController {
       {
         avatar: req.user.picture as string,
         tel: req.user.phone_number,
+        line: req.user.line as string, 
       },
     );
 
@@ -52,6 +53,7 @@ export class UsersController {
   }
 
   @Get(':id')
+  @UseGuards(FirebaseGuard)
   @UseInterceptors(ClassSerializerInterceptor)
   async getUserProfile(@Param('id') id: number, @Req() req: FirebaseUserRequest): Promise<EditableSimpleUserDto> {
     const user = await this.userService.findOneById(id);
@@ -100,10 +102,5 @@ export class UsersController {
   @Post('validator')
   validator(@Body() user: UserDto): Promise<UserDto> {
     return Promise.resolve(user);
-  }
-
-  @Post()
-  async create(@Body() user: UserDto) {
-    return await this.userService.create(user);
   }
 }

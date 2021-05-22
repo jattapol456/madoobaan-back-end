@@ -102,7 +102,7 @@ export class Announce extends Base {
   coverPhoto!: string
 
   @Prop()
-  photo?: string
+  photo?: string[]
 }
 
 export type AnnounceDocument = Announce & BaseDocument

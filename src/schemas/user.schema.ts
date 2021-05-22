@@ -16,7 +16,7 @@ export class User extends Base {
   @Prop({ unique: true })
   email!: string;
 
-  @Prop({ default: false })
+  @Prop({ default: true })
   verified!: boolean;
 
   @Prop({ default: '' })
@@ -33,6 +33,9 @@ export class User extends Base {
 
   @Prop({ default: null })
   line!: string;
+
+  @Prop({ default: null })
+  facebook!: string;
 
   @Prop({ default: null })
   imageProfileUrlS?: string;

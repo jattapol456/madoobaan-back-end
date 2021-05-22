@@ -40,7 +40,7 @@ interface IinsertAnnounce {
   announceCode: string;
   moreDetails: string;
   coverPhoto: string;
-  photo: string;
+  photo: string[];
 }
 
 @Injectable()
@@ -64,5 +64,4 @@ export class AnnounceService extends BaseService<AnnounceDocument> {
     const { docs } = await this.announcePaginationModel.paginate({}, options);
     return docs;
   }
-
 }
