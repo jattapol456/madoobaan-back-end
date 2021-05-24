@@ -54,11 +54,6 @@ interface IinsertAnnounce {
   photo: string[];
 }
 
-interface IsearchAnnounce {
-  type?: string;
-  province?: string;
-  topicName?: string;
-}
 @Controller('announces')
 export class AnnounceController {
   constructor(private announceService: AnnounceService) {}
@@ -76,30 +71,6 @@ export class AnnounceController {
       .then((res) => plainToClass(SimpleAnnounceDto, res.toObject()));
   }
 
-  @Get(':id')
-  @UseGuards(FirebaseGuard)
-  @UseInterceptors(ClassSerializerInterceptor)
-  async getAnnounceById(@Param('id') id: number, @Req() req: FirebaseUserRequest): Promise<SimpleAnnounceDto> {
-    if (!req.user) throw new UnauthorizedException();
-    return await this.announceService.findOneById(id).then((res) => plainToClass(SimpleAnnounceDto, res.toObject()));
-  }
-
-  @Get('search')
-  @UseInterceptors(ClassSerializerInterceptor)
-  async getAnnouncesByNameAndTypeAndProvince(
-    @Req() reqQuery: Request, 
-    @Query('type') type: string,
-    @Query('topicName') topicName: string,
-    @Query('province') province: string): Promise<SimpleAnnounceDto[]> {
-    return await this.announceService
-      .findAnnouncesByNameAndTypeAndProvince({
-        topicName: topicName,
-        type: type,
-        province: province
-      })
-      .then((result) => result.map((res) => plainToClass(SimpleAnnounceDto, res.toObject())));
-  }
-
   @Put(':id')
   @UseGuards(FirebaseGuard)
   @UseInterceptors(ClassSerializerInterceptor)
@@ -112,15 +83,6 @@ export class AnnounceController {
     return this.announceService.updateOneById(id, edit);
   }
 
-  @Get()
-  @UseInterceptors(ClassSerializerInterceptor)
-  async getAnnounce(@Req() reqQuery: Request): Promise<SimpleAnnounceDto[]> {
-    const { limit = 16, page }: IPaginateQuery = reqQuery.query;
-    return await this.announceService
-      .paginateAnnounces({ limit, page })
-      .then((result) => result.map((res) => plainToClass(SimpleAnnounceDto, res.toObject())));
-  }
-
   @Delete(':id')
   @UseGuards(FirebaseGuard)
   @UseInterceptors(ClassSerializerInterceptor)
@@ -128,4 +90,54 @@ export class AnnounceController {
     if (!req.user) throw new UnauthorizedException();
     return this.announceService.delete(id);
   }
+
+  @Get(':id')
+  @UseGuards(FirebaseGuard)
+  @UseInterceptors(ClassSerializerInterceptor)
+  async getAnnounceById(@Param('id') id: number, @Req() req: FirebaseUserRequest): Promise<SimpleAnnounceDto> {
+    if (!req.user) throw new UnauthorizedException();
+    return await this.announceService.findOneById(id).then((res) => plainToClass(SimpleAnnounceDto, res.toObject()));
+  }
+
+  @Get()
+  @UseInterceptors(ClassSerializerInterceptor)
+  async getAnnounces(@Req() reqQuery: Request): Promise<SimpleAnnounceDto[]> {
+    const { limit = 16, page }: IPaginateQuery = reqQuery.query;
+    return await this.announceService
+      .paginateAnnounces({ limit, page })
+      .then((result) => result.map((res) => plainToClass(SimpleAnnounceDto, res.toObject())));
+  }
+
+  @Get('search')
+  @UseInterceptors(ClassSerializerInterceptor)
+  async getAnnouncesByNameAndTypeAndProvince(
+    @Query('type') type: string,
+    @Query('topicName') topicName: string,
+    @Query('province') province: string,
+  ): Promise<SimpleAnnounceDto[]> {
+    return await this.announceService
+      .findAnnouncesByNameAndTypeAndProvince({
+        topicName: topicName,
+        type: type,
+        province: province,
+      })
+      .then((result) => result.map((res) => plainToClass(SimpleAnnounceDto, res.toObject())));
+  }
+
+  @Get('sort')
+  @UseInterceptors(ClassSerializerInterceptor)
+  async sortAnnounces(
+    @Req() reqQuery: Request,
+    @Query('type') type: string,
+    @Query('sort') sort: string
+  ): Promise<SimpleAnnounceDto[]> {
+    const { limit = 16, page }: IPaginateQuery = reqQuery.query;
+    console.log(type);
+    
+    return await this.announceService
+      .sortAnnounces({ limit, page, type, sort })
+      .then((result) => result.map((res) => plainToClass(SimpleAnnounceDto, res.toObject())));
+  }
+
+ 
 }
