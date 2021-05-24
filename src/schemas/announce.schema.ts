@@ -10,20 +10,9 @@ export class Announce extends Base {
     Object.assign(this, Announce)
   }
 
+
   @Prop()
   type!: string
-
-  @Prop()
-  houseNumber!: string
-
-  @Prop()
-  moo!: string
-
-  @Prop()
-  soi!: string
-
-  @Prop()
-  road!: string
 
   @Prop()
   province!: string
@@ -38,13 +27,25 @@ export class Announce extends Base {
   zipcode!: string
 
   @Prop()
+  houseNumber!: string
+
+  @Prop()
+  moo!: string
+
+  @Prop()
+  soi!: string
+
+  @Prop()
+  road!: string
+
+  @Prop()
   floor?: string
 
   @Prop()
   bedroom!: string
 
   @Prop()
-  toilet!: string
+  bathroom!: string
 
   @Prop()
   parking!: string
@@ -90,9 +91,6 @@ export class Announce extends Base {
 
   @Prop()
   topicName!: string
-
-  @Prop()
-  announceCode?: string
 
   @Prop()
   moreDetails!: string

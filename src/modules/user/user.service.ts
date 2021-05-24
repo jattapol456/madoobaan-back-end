@@ -19,9 +19,4 @@ export class UserService extends BaseService<UserDocument> {
       },
     });
   }
-
-  async create(user: UserDto): Promise<UserDocument> {
-    const newNumber = await this.userModel.create(user);
-    return newNumber;
-  }
 }
