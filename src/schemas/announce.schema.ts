@@ -93,9 +93,6 @@ export class Announce extends Base {
   topicName!: string
 
   @Prop()
-  announceCode?: string
-
-  @Prop()
   moreDetails!: string
 
   @Prop()

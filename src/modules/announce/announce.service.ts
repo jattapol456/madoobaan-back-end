@@ -43,10 +43,17 @@ interface IinsertAnnounce {
   photo: string[];
 }
 
-interface IsearchAnnounce {
+interface IsearchAnnounces {
   type?: string;
   province?: string;
   topicName?: string;
+}
+
+interface IsortAnnounces {
+  limit: number;
+  page?: number;
+  type: string;
+  sort: string;
 }
 
 @Injectable()
@@ -62,7 +69,7 @@ export class AnnounceService extends BaseService<AnnounceDocument> {
     return await this.announceModel.create(arg);
   }
 
-  async findAnnouncesByNameAndTypeAndProvince(arg: IsearchAnnounce): Promise<AnnounceDocument[]> {
+  async findAnnouncesByNameAndTypeAndProvince(arg: IsearchAnnounces): Promise<AnnounceDocument[]> {
     console.log(arg);
     return await this.announceModel.find({
       $or: [
@@ -79,6 +86,27 @@ export class AnnounceService extends BaseService<AnnounceDocument> {
         },
       ],
     });
+  }
+
+  async sortAnnounces(arg: IsortAnnounces): Promise<AnnounceDocument[]> {
+    const options = {
+      limit: arg.limit!,
+      page: arg.page!,
+      sort: arg.sort,
+    };
+    const { docs } = await this.announcePaginationModel.paginate(
+      {
+        $or: [
+          {
+            type: {
+              $regex: arg.type,
+            },
+          },
+        ],
+      },
+      options,
+    );
+    return docs;
   }
 
   async paginateAnnounces(arg: IpaginateAnnounce): Promise<AnnounceDocument[]> {
