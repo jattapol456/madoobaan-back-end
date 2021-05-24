@@ -40,7 +40,7 @@ interface IinsertAnnounce {
   announceCode: string
   moreDetails: string
   coverPhoto: string
-  photo: string
+  photo: string[]
 }
 
 @Injectable()

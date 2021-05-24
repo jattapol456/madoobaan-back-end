@@ -95,7 +95,7 @@ export class AnnounceDto {
     coverPhoto!: string
 
     @IsString()
-    photo?: string
+    photo?: string[]
 }
 
 export class SimpleAnnounceDto extends AnnounceDto {
