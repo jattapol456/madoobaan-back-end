@@ -1,8 +1,8 @@
-import { EditSimpleAnnounceDto, SimpleAnnounceDto } from '@modules/announce/announce.dto';
+import { EditSimpleAnnounceDto, SearchAnnounceDto, SimpleAnnounceDto } from '@modules/announce/announce.dto';
 import { AnnounceService } from '@modules/announce/announce.service';
 import { FirebaseGuard } from '@modules/auth/firebase.guard';
 import { Delete, Put, UseInterceptors } from '@nestjs/common';
-import { Body } from '@nestjs/common';
+import { Body, Query } from '@nestjs/common';
 import { UseGuards } from '@nestjs/common';
 import { UnauthorizedException } from '@nestjs/common';
 import { Param } from '@nestjs/common';
@@ -54,6 +54,11 @@ interface IinsertAnnounce {
   photo: string[];
 }
 
+interface IsearchAnnounce {
+  type?: string;
+  province?: string;
+  topicName?: string;
+}
 @Controller('announces')
 export class AnnounceController {
   constructor(private announceService: AnnounceService) {}
@@ -79,6 +84,22 @@ export class AnnounceController {
     return await this.announceService.findOneById(id).then((res) => plainToClass(SimpleAnnounceDto, res.toObject()));
   }
 
+  @Get('search')
+  @UseInterceptors(ClassSerializerInterceptor)
+  async getAnnouncesByNameAndTypeAndProvince(
+    @Req() reqQuery: Request, 
+    @Query('type') type: string,
+    @Query('topicName') topicName: string,
+    @Query('province') province: string): Promise<SimpleAnnounceDto[]> {
+    return await this.announceService
+      .findAnnouncesByNameAndTypeAndProvince({
+        topicName: topicName,
+        type: type,
+        province: province
+      })
+      .then((result) => result.map((res) => plainToClass(SimpleAnnounceDto, res.toObject())));
+  }
+
   @Put(':id')
   @UseGuards(FirebaseGuard)
   @UseInterceptors(ClassSerializerInterceptor)
@@ -96,7 +117,7 @@ export class AnnounceController {
   async getAnnounce(@Req() reqQuery: Request): Promise<SimpleAnnounceDto[]> {
     const { limit = 16, page }: IPaginateQuery = reqQuery.query;
     return await this.announceService
-      .paginateAnnounce({ limit, page })
+      .paginateAnnounces({ limit, page })
       .then((result) => result.map((res) => plainToClass(SimpleAnnounceDto, res.toObject())));
   }
 

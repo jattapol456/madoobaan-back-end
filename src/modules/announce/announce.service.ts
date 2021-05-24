@@ -1,8 +1,8 @@
-import { BaseService } from '@modules/base/base.service'
-import { Injectable } from '@nestjs/common'
-import { InjectModel } from '@nestjs/mongoose'
-import { Announce, AnnounceDocument } from '@schemas/announce.schema'
-import { Model, PaginateModel } from 'mongoose'
+import { BaseService } from '@modules/base/base.service';
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Announce, AnnounceDocument } from '@schemas/announce.schema';
+import { Model, PaginateModel } from 'mongoose';
 
 interface IpaginateAnnounce {
   limit: number;
@@ -43,23 +43,48 @@ interface IinsertAnnounce {
   photo: string[];
 }
 
+interface IsearchAnnounce {
+  type?: string;
+  province?: string;
+  topicName?: string;
+}
+
 @Injectable()
 export class AnnounceService extends BaseService<AnnounceDocument> {
   constructor(
     @InjectModel(Announce.name) private announceModel: Model<AnnounceDocument>,
     @InjectModel(Announce.name) private announcePaginationModel: PaginateModel<AnnounceDocument>,
   ) {
-    super(announceModel)
+    super(announceModel);
   }
 
   async insertAnnounce(arg: IinsertAnnounce): Promise<AnnounceDocument> {
-    return await this.announceModel.create(arg)
+    return await this.announceModel.create(arg);
   }
 
-  async paginateAnnounce(arg: IpaginateAnnounce): Promise<AnnounceDocument[]> {
+  async findAnnouncesByNameAndTypeAndProvince(arg: IsearchAnnounce): Promise<AnnounceDocument[]> {
+    console.log(arg);
+    return await this.announceModel.find({
+      $or: [
+        {
+          type: {
+            $regex: arg.type,
+          },
+          province: {
+            $regex: arg.province,
+          },
+          topicName: {
+            $regex: arg.topicName,
+          },
+        },
+      ],
+    });
+  }
+
+  async paginateAnnounces(arg: IpaginateAnnounce): Promise<AnnounceDocument[]> {
     const options = {
       limit: arg.limit!,
-      page: arg.page!
+      page: arg.page!,
     };
     const { docs } = await this.announcePaginationModel.paginate({}, options);
     return docs;

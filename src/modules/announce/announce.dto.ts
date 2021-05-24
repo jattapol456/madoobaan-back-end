@@ -108,6 +108,8 @@ export class SimpleAnnounceDto extends AnnounceDto {
   _id: any;
 }
 
+export class SearchAnnounceDto extends PickType(AnnounceDto, ['type', 'topicName', "province"]) {}
+
 export class EditSimpleAnnounceDto extends (OmitType(AnnounceDto, ['agent', 'announceCode',])) {}
 
 export class EditableSimpleUserRequestDto extends PartialType(OmitType(AnnounceDto, [])) {}
