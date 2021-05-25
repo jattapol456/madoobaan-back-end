@@ -29,7 +29,7 @@ interface IinsertAnnounce {
   ngan: string;
   squareWa: string;
   squareMeter: string;
-  salePrice: string;
+  salePrice: number;
   rentalCommonfee: string;
   roomStatus: string;
   agent: string;
@@ -37,7 +37,6 @@ interface IinsertAnnounce {
   security: string[];
   facilities: string[];
   topicName: string;
-  announceCode: string;
   moreDetails: string;
   coverPhoto: string;
   photo: string[];
@@ -52,8 +51,9 @@ interface IsearchAnnounces {
 interface IsortAnnounces {
   limit: number;
   page?: number;
-  type: string;
   sort: string;
+  type: string;
+  createBy: string;
 }
 
 @Injectable()
@@ -92,7 +92,7 @@ export class AnnounceService extends BaseService<AnnounceDocument> {
     const options = {
       limit: arg.limit!,
       page: arg.page!,
-      sort: arg.sort,
+      sort: arg.sort!,
     };
     const { docs } = await this.announcePaginationModel.paginate(
       {
@@ -101,6 +101,9 @@ export class AnnounceService extends BaseService<AnnounceDocument> {
             type: {
               $regex: arg.type,
             },
+            createBy: {
+              $regex: arg.createBy,
+            }
           },
         ],
       },

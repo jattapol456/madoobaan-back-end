@@ -40,7 +40,7 @@ interface IinsertAnnounce {
   ngan: string;
   squareWa: string;
   squareMeter: string;
-  salePrice: string;
+  salePrice: number;
   rentalCommonfee: string;
   roomStatus: string;
   agent: string;
@@ -48,10 +48,10 @@ interface IinsertAnnounce {
   security: string[];
   facilities: string[];
   topicName: string;
-  announceCode: string;
   moreDetails: string;
   coverPhoto: string;
   photo: string[];
+  createBy: string;
 }
 
 @Controller('announces')
@@ -66,6 +66,7 @@ export class AnnounceController {
     @Req() req: FirebaseUserRequest,
   ): Promise<SimpleAnnounceDto> {
     if (!req.user) throw new UnauthorizedException();
+    insertAnnounce.createBy = req.user.email as string;
     return await this.announceService
       .insertAnnounce(insertAnnounce)
       .then((res) => plainToClass(SimpleAnnounceDto, res.toObject()));
@@ -74,7 +75,7 @@ export class AnnounceController {
   @Put(':id')
   @UseGuards(FirebaseGuard)
   @UseInterceptors(ClassSerializerInterceptor)
-  async updateUserInfo(
+  async updateAnnounce(
     @Req() req: FirebaseUserRequest,
     @Param('id') id: number,
     @Body() edit: EditSimpleAnnounceDto,
@@ -125,19 +126,19 @@ export class AnnounceController {
   }
 
   @Get('sort')
+  @UseGuards(FirebaseGuard)
   @UseInterceptors(ClassSerializerInterceptor)
   async sortAnnounces(
     @Req() reqQuery: Request,
     @Query('type') type: string,
-    @Query('sort') sort: string
+    @Query('sort') sort: string,
+    @Req() req: FirebaseUserRequest
   ): Promise<SimpleAnnounceDto[]> {
+    if (!req.user) throw new UnauthorizedException();
     const { limit = 16, page }: IPaginateQuery = reqQuery.query;
-    console.log(type);
-    
+    const createBy = req.user.email as string
     return await this.announceService
-      .sortAnnounces({ limit, page, type, sort })
+      .sortAnnounces({ limit, page, sort, type, createBy })
       .then((result) => result.map((res) => plainToClass(SimpleAnnounceDto, res.toObject())));
   }
-
- 
 }
