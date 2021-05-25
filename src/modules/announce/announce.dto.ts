@@ -1,6 +1,6 @@
 import { OmitType, PartialType, PickType } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
-import { IsString, IsObject } from 'class-validator';
+import { IsString, IsObject, IsArray, IsNumber } from 'class-validator';
 import { IEditable } from 'src/types';
 
 export class AnnounceDto {
@@ -61,8 +61,8 @@ export class AnnounceDto {
   @IsString()
   squareMeter?: string;
 
-  @IsString()
-  salePrice?: string;
+  @IsNumber()
+  salePrice?: number;
 
   @IsString()
   rentalCommonfee?: string;
@@ -73,20 +73,17 @@ export class AnnounceDto {
   @IsString()
   agent?: string;
 
-  @IsString()
+  @IsArray()
   commonFee?: string[];
 
-  @IsString()
+  @IsArray()
   security?: string[];
 
-  @IsString()
+  @IsArray()
   facilities?: string[];
 
   @IsString()
   topicName!: string;
-
-  @IsString()
-  announceCode!: string;
 
   @IsString()
   moreDetails!: string;
@@ -94,7 +91,7 @@ export class AnnounceDto {
   @IsString()
   coverPhoto!: string;
 
-  @IsString()
+  @IsArray()
   photo?: string[];
 }
 
@@ -110,7 +107,7 @@ export class SimpleAnnounceDto extends AnnounceDto {
 
 export class SearchAnnounceDto extends PickType(AnnounceDto, ['type', 'topicName', "province"]) {}
 
-export class EditSimpleAnnounceDto extends (OmitType(AnnounceDto, ['agent', 'announceCode',])) {}
+export class EditSimpleAnnounceDto extends (OmitType(AnnounceDto, ['agent'])) {}
 
 export class EditableSimpleUserRequestDto extends PartialType(OmitType(AnnounceDto, [])) {}
 

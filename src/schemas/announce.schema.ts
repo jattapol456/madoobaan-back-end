@@ -69,7 +69,7 @@ export class Announce extends Base {
   squareMeter!: string
   
   @Prop()
-  salePrice!: string
+  salePrice!: number
 
   @Prop()
   rentalCommonfee?: string
@@ -100,6 +100,9 @@ export class Announce extends Base {
 
   @Prop()
   photo?: string[]
+
+  @Prop()
+  createBy?: string
 }
 
 export type AnnounceDocument = Announce & BaseDocument
