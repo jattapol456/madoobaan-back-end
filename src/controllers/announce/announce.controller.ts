@@ -29,7 +29,11 @@ interface IinsertAnnounce {
   province: string;
   district: string;
   subdistrict: string;
-  zipcode: string;
+  provinceName: string;
+  districtName: string;
+  subDistrictName: string;
+  zipcode: number;
+  zipcodeName: string;
   floor: string;
   bedroom: string;
   bathroom: string;
@@ -111,13 +115,13 @@ export class AnnounceController {
   async getAnnouncesByNameAndTypeAndProvince(
     @Query('type') type: string,
     @Query('topicName') topicName: string,
-    @Query('province') province: string,
+    @Query('provinceName') provinceName: string,
   ): Promise<SimpleAnnounceDto[]> {
     return await this.announceService
       .findAnnouncesByNameAndTypeAndProvince({
         topicName: topicName,
         type: type,
-        province: province,
+        provinceName: provinceName,
       })
       .then((result) => result.map((res) => plainToClass(SimpleAnnounceDto, res.toObject())));
   }
@@ -129,11 +133,11 @@ export class AnnounceController {
     @Req() reqQuery: Request,
     @Query('type') type: string,
     @Query('sort') sort: string,
-    @Req() req: FirebaseUserRequest
+    @Req() req: FirebaseUserRequest,
   ): Promise<SimpleAnnounceDto[]> {
     if (!req.user) throw new UnauthorizedException();
     const { limit = 16, page }: IPaginateQuery = reqQuery.query;
-    const createBy = req.user.email as string
+    const createBy = req.user.email as string;
     return await this.announceService
       .sortAnnounces({ limit, page, sort, type, createBy })
       .then((result) => result.map((res) => plainToClass(SimpleAnnounceDto, res.toObject())));

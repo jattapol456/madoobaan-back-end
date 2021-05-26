@@ -12,25 +12,25 @@ export class Zone extends Base {
   }
 
   @Prop({ unique: false })
-  subdistrictName!: string
+  subDistrictName!: string
   
   @Prop()
-  subdistrictId!: number
+  subdistrict!: number
 
   @Prop()
   img!: string
 
   @Prop()
-  provinceId!: number
+  province!: number
 
   @Prop()
-  province!: string
+  provinceName!: string
 
   @Prop()
   district!: string
 
   @Prop()
-  districtId!: number
+  districtName!: string
 
   @Prop()
   zipcode!: number

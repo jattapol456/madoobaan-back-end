@@ -18,7 +18,11 @@ interface IinsertAnnounce {
   province: string;
   district: string;
   subdistrict: string;
-  zipcode: string;
+  provinceName: string;
+  districtName: string;
+  subDistrictName: string;
+  zipcode: number;
+  zipcodeName: string;
   floor: string;
   bedroom: string;
   bathroom: string;
@@ -44,7 +48,7 @@ interface IinsertAnnounce {
 
 interface IsearchAnnounces {
   type?: string;
-  province?: string;
+  provinceName?: string;
   topicName?: string;
 }
 
@@ -77,8 +81,8 @@ export class AnnounceService extends BaseService<AnnounceDocument> {
           type: {
             $regex: arg.type,
           },
-          province: {
-            $regex: arg.province,
+          provinceName: {
+            $regex: arg.provinceName,
           },
           topicName: {
             $regex: arg.topicName,

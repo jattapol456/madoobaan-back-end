@@ -14,16 +14,28 @@ export class Announce extends Base {
   type!: string
 
   @Prop()
-  province!: string
+  province!: string;
 
   @Prop()
-  district!: string
+  district!: string;
 
   @Prop()
-  subdistrict!: string
+  subdistrict!: string;
 
   @Prop()
-  zipcode!: string
+  provinceName!: string
+
+  @Prop()
+  districtName!: string
+
+  @Prop()
+  subDistrictName!: string
+
+  @Prop()
+  zipcode!: number
+
+  @Prop()
+  zipcodeName!: string
 
   @Prop()
   houseNumber!: string

@@ -10,14 +10,14 @@ interface IpaginateZone {
 }
 
 interface IinsertZone {
-  subdistrictName: string;
+  subDistrictName: string;
   img: string;
   province: string;
   district: string;
   zipcode: number;
-  districtId: number;
-  provinceId: number;
-  subdistrictId: number;
+  districtName: string;
+  provinceName: string;
+  subDistrict: string;
 }
 
 @Injectable()
