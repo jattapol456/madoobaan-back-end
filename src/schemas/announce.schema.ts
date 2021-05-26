@@ -10,7 +10,6 @@ export class Announce extends Base {
     Object.assign(this, Announce)
   }
 
-
   @Prop()
   type!: string
 

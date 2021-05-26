@@ -93,10 +93,7 @@ export class AnnounceController {
   }
 
   @Get(':id')
-  @UseGuards(FirebaseGuard)
-  @UseInterceptors(ClassSerializerInterceptor)
-  async getAnnounceById(@Param('id') id: number, @Req() req: FirebaseUserRequest): Promise<SimpleAnnounceDto> {
-    if (!req.user) throw new UnauthorizedException();
+  async getAnnounceById(@Param('id') id: number): Promise<SimpleAnnounceDto> {
     return await this.announceService.findOneById(id).then((res) => plainToClass(SimpleAnnounceDto, res.toObject()));
   }
 
