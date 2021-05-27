@@ -107,7 +107,7 @@ export class AnnounceService extends BaseService<AnnounceDocument> {
             },
             email: {
               $regex: arg.email,
-            },
+            }
           },
         ],
       },
