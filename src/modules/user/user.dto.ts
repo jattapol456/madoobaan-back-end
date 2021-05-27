@@ -62,4 +62,4 @@ export class EditableSimpleUserDto extends SimpleUserDto implements IEditable {
   editable!: boolean;
 }
 
-export class UserSetupDto extends PickType(SimpleUserDto, ['firstname', 'lastname', 'tel', 'line', 'facebook',]) {}
+export class UserSetupDto extends PickType(SimpleUserDto, ['firstname', 'lastname', 'tel', 'line', 'facebook', 'avatar']) {}

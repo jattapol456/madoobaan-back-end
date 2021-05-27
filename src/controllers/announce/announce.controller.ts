@@ -55,7 +55,12 @@ interface IinsertAnnounce {
   moreDetails: string;
   coverPhoto: string;
   photo: string[];
-  createBy: string;
+  firstname: string;
+  lastname: string;
+  tel: string;
+  facebook: string;
+  email: string;
+  line: string;
 }
 
 @Controller('announces')
@@ -70,7 +75,7 @@ export class AnnounceController {
     @Req() req: FirebaseUserRequest,
   ): Promise<SimpleAnnounceDto> {
     if (!req.user) throw new UnauthorizedException();
-    insertAnnounce.createBy = req.user.email as string;
+    insertAnnounce.email = req.user.email as string;
     return await this.announceService
       .insertAnnounce(insertAnnounce)
       .then((res) => plainToClass(SimpleAnnounceDto, res.toObject()));
@@ -137,9 +142,9 @@ export class AnnounceController {
   ): Promise<SimpleAnnounceDto[]> {
     if (!req.user) throw new UnauthorizedException();
     const { limit = 16, page }: IPaginateQuery = reqQuery.query;
-    const createBy = req.user.email as string;
+    const email = req.user.email as string;
     return await this.announceService
-      .sortAnnounces({ limit, page, sort, type, createBy })
+      .sortAnnounces({ limit, page, sort, type, email })
       .then((result) => result.map((res) => plainToClass(SimpleAnnounceDto, res.toObject())));
   }
 }

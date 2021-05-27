@@ -1,17 +1,17 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
-import { Base, BaseDocument } from './base.schema'
-import * as mongoose from 'mongoose'
-import mongoosePaginate = require('mongoose-paginate-v2')
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Base, BaseDocument } from './base.schema';
+import * as mongoose from 'mongoose';
+import mongoosePaginate = require('mongoose-paginate-v2');
 
 @Schema({ timestamps: true })
 export class Announce extends Base {
   constructor(Announce?: Announce) {
-    super()
-    Object.assign(this, Announce)
+    super();
+    Object.assign(this, Announce);
   }
 
   @Prop()
-  type!: string
+  type!: string;
 
   @Prop()
   province!: string;
@@ -23,101 +23,116 @@ export class Announce extends Base {
   subdistrict!: string;
 
   @Prop()
-  provinceName!: string
+  provinceName!: string;
 
   @Prop()
-  districtName!: string
+  districtName!: string;
 
   @Prop()
-  subDistrictName!: string
+  subDistrictName!: string;
 
   @Prop()
-  zipcode!: number
+  zipcode!: number;
 
   @Prop()
-  zipcodeName!: string
+  zipcodeName!: string;
 
   @Prop()
-  houseNumber!: string
+  houseNumber!: string;
 
   @Prop()
-  moo!: string
+  moo!: string;
 
   @Prop()
-  soi!: string
+  soi!: string;
 
   @Prop()
-  road!: string
+  road!: string;
 
   @Prop()
-  floor?: string
+  floor?: string;
 
   @Prop()
-  bedroom!: string
+  bedroom!: string;
 
   @Prop()
-  bathroom!: string
+  bathroom!: string;
 
   @Prop()
-  parking!: string
+  parking!: string;
 
   @Prop()
-  direction?: string
+  direction?: string;
 
   @Prop()
-  furniture?: string
+  furniture?: string;
 
   @Prop()
-  rai!: string
+  rai!: string;
 
   @Prop()
-  ngan!: string
+  ngan!: string;
 
   @Prop()
-  squareWa!: string
+  squareWa!: string;
 
   @Prop()
-  squareMeter!: string
-  
-  @Prop()
-  salePrice!: number
+  squareMeter!: string;
 
   @Prop()
-  rentalCommonfee?: string
+  salePrice!: number;
 
   @Prop()
-  roomStatus?: string
+  rentalCommonfee?: string;
 
   @Prop()
-  agent?: string
+  roomStatus?: string;
 
   @Prop()
-  commonFee?: string[]
+  agent?: string;
 
   @Prop()
-  security?: string[]
+  commonFee?: string[];
 
   @Prop()
-  facilities?: string[]
+  security?: string[];
 
   @Prop()
-  topicName!: string
+  facilities?: string[];
 
   @Prop()
-  moreDetails!: string
+  topicName!: string;
 
   @Prop()
-  coverPhoto!: string
+  moreDetails!: string;
 
   @Prop()
-  photo?: string[]
+  coverPhoto!: string;
 
   @Prop()
-  createBy?: string
+  photo?: string[];
+
+  @Prop()
+  firstname?: string;
+
+  @Prop()
+  lastname?: string;
+
+  @Prop()
+  tel?: string;
+
+  @Prop()
+  facebook?: string;
+
+  @Prop()
+  email?: string;
+
+  @Prop()
+  line?: string;
 }
 
-export type AnnounceDocument = Announce & BaseDocument
+export type AnnounceDocument = Announce & BaseDocument;
 
-export const AnnounceSchema = SchemaFactory.createForClass(Announce)
+export const AnnounceSchema = SchemaFactory.createForClass(Announce);
 
-AnnounceSchema.plugin(mongoosePaginate)
+AnnounceSchema.plugin(mongoosePaginate);
