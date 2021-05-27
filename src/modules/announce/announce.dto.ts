@@ -15,7 +15,7 @@ export class AnnounceDto {
 
   @IsString()
   subdistrict!: string;
-  
+
   @IsString()
   provinceName!: string;
 
@@ -105,6 +105,24 @@ export class AnnounceDto {
 
   @IsArray()
   photo?: string[];
+
+  @IsString()
+  firstname?: string;
+
+  @IsString()
+  lastname?: string;
+
+  @IsString()
+  tel?: string;
+
+  @IsString()
+  facebook?: string;
+
+  @IsString()
+  email?: string;
+
+  @IsString()
+  line?: string;
 }
 
 export class SimpleAnnounceDto extends AnnounceDto {
@@ -117,9 +135,9 @@ export class SimpleAnnounceDto extends AnnounceDto {
   _id: any;
 }
 
-export class SearchAnnounceDto extends PickType(AnnounceDto, ['type', 'topicName', "provinceName"]) {}
+export class SearchAnnounceDto extends PickType(AnnounceDto, ['type', 'topicName', 'provinceName']) {}
 
-export class EditSimpleAnnounceDto extends (OmitType(AnnounceDto, ['agent'])) {}
+export class EditSimpleAnnounceDto extends OmitType(AnnounceDto, ['agent']) {}
 
 export class EditableSimpleUserRequestDto extends PartialType(OmitType(AnnounceDto, [])) {}
 

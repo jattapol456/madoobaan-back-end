@@ -57,7 +57,7 @@ interface IsortAnnounces {
   page?: number;
   sort: string;
   type: string;
-  createBy: string;
+  email: string;
 }
 
 @Injectable()
@@ -105,9 +105,9 @@ export class AnnounceService extends BaseService<AnnounceDocument> {
             type: {
               $regex: arg.type,
             },
-            createBy: {
-              $regex: arg.createBy,
-            }
+            email: {
+              $regex: arg.email,
+            },
           },
         ],
       },
