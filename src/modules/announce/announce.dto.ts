@@ -1,6 +1,6 @@
 import { OmitType, PartialType, PickType } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
-import { IsString, IsObject, IsArray, IsNumber } from 'class-validator';
+import { IsString, IsObject, IsArray, IsNumber, IsInt } from 'class-validator';
 import { IEditable } from 'src/types';
 
 export class AnnounceDto {
@@ -15,9 +15,21 @@ export class AnnounceDto {
 
   @IsString()
   subdistrict!: string;
+  
+  @IsString()
+  provinceName!: string;
 
   @IsString()
-  zipcode!: string;
+  districtName!: string;
+
+  @IsString()
+  subDistrictName!: string;
+
+  @IsInt()
+  zipcode!: number;
+
+  @IsString()
+  zipcodeName!: string;
 
   @IsString()
   houseNumber!: string;
@@ -105,7 +117,7 @@ export class SimpleAnnounceDto extends AnnounceDto {
   _id: any;
 }
 
-export class SearchAnnounceDto extends PickType(AnnounceDto, ['type', 'topicName', "province"]) {}
+export class SearchAnnounceDto extends PickType(AnnounceDto, ['type', 'topicName', "provinceName"]) {}
 
 export class EditSimpleAnnounceDto extends (OmitType(AnnounceDto, ['agent'])) {}
 
